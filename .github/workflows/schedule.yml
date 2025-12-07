@@ -1,8 +1,7 @@
 name: Update gist with WakaTime stats
 on:
   schedule:
-    - cron: "0 0 * * *"
-  # Manual triggers with workflow_dispatch
+    - cron: "0 0 * * 0"
   workflow_dispatch:
 jobs:
   update-gist:
@@ -10,7 +9,10 @@ jobs:
     steps:
       - name: Update gist
         uses: g1eny0ung/waka-box@master
+        # with:
+        #   gist-name: Weekly Wakatime Stats
         env:
           GIST_ID: ${{ secrets.GIST_ID }}
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
           WAKATIME_API_KEY: ${{ secrets.WAKATIME_API_KEY }}
+          # WAKATIME_BASE_URL: ${{ secrets.WAKATIME_BASE_URL }}
